@@ -1,0 +1,35 @@
+version : '3'
+
+services:
+  mysql:
+    image: mysql:5.7 # You can change this verion
+    container_name: dev_mysql
+    environment:
+      MYSQL_USER: jack
+      MYSQL_PASSWORD: collin12345
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: default_schema
+    restart: unless-stopped
+    volumes:
+      - storage_mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: dev_pma
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      UPLOAD_LIMIT: 64M
+    restart: always
+    ports:
+      - 8183:80
+     
+
+volumes:
+  storage_mysql:
+  
