@@ -8,7 +8,7 @@ services:
       - "54320:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: collin12345
+      POSTGRES_PASSWORD: password
     volumes:
       - local_pgdata:/var/lib/postgresql/data
   pgadmin:
@@ -18,8 +18,8 @@ services:
     ports:
       - "5050:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: pete9450@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: collin12345
+      PGADMIN_DEFAULT_EMAIL: email@email.com
+      PGADMIN_DEFAULT_PASSWORD: password
     volumes:
       - pgadmin-data:/var/lib/pgadmin
 
